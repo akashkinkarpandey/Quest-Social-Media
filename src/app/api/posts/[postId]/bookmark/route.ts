@@ -1,12 +1,15 @@
 import { validateRequest } from "@/auth";
 import prisma from "@/lib/prisma";
 import { BookmarkInfo } from "@/lib/types";
-
+interface Props{
+   params: Promise<{ postId: string }> 
+}
 export async function GET(
   req: Request,
-  { params: { postId } }: { params: { postId: string } },
+  { params }: Props,
 ) {
   try {
+    const {postId} = await params;
     const { user: loggedInUser } = await validateRequest();
 
     if (!loggedInUser) {
@@ -35,9 +38,11 @@ export async function GET(
 
 export async function POST(
   req: Request,
-  { params: { postId } }: { params: { postId: string } },
+  { params }: Props,
 ) {
   try {
+    const { postId } = await params;
+
     const { user: loggedInUser } = await validateRequest();
 
     if (!loggedInUser) {
@@ -67,9 +72,10 @@ export async function POST(
 
 export async function DELETE(
   req: Request,
-  { params: { postId } }: { params: { postId: string } },
+  { params}: Props,
 ) {
   try {
+    const { postId } = await params;
     const { user: loggedInUser } = await validateRequest();
 
     if (!loggedInUser) {

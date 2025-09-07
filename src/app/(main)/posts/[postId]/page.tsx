@@ -30,7 +30,7 @@ const getPost = cache(async (postId: string, loggedInUserId: string) => {
 export async function generateMetadata({
   params,
 }: {
-  params: { postId: string };
+  params: Promise<{ postId: string }>;
 }): Promise<Metadata> {
   const { postId } = await params;
   const { user } = await validateRequest();
@@ -44,7 +44,7 @@ export async function generateMetadata({
   };
 }
 
-export default async function Page({ params }: { params: { postId: string } }) {
+export default async function Page({ params }: { params: Promise<{ postId: string }> }) {
   const { postId } = await params;
   const { user } = await validateRequest();
 
