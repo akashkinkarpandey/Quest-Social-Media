@@ -1,11 +1,11 @@
 import { validateRequest } from "@/auth";
 import prisma from "@/lib/prisma";
 import { getUserDataSelect } from "@/lib/types";
-
-export async function GET(
-  req: Request,
-  { params: { username } }: { params: { username: string } },
-) {
+interface Props {
+  params: Promise<{ username: string }>;
+}
+export async function GET(req: Request, { params }: Props) {
+  const { username } =await params;
   try {
     const { user: loggedInUser } = await validateRequest();
 
