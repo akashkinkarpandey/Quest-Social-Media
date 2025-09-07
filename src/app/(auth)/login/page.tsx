@@ -14,17 +14,22 @@ export default function Page() {
     <main className="flex h-screen items-center justify-center bg-gradient-to-br from-indigo-500 via-purple-500 to-pink-500 p-5">
       <div className="flex h-full max-h-[44rem] w-full max-w-[72rem] overflow-hidden rounded-3xl bg-white/90 shadow-2xl backdrop-blur-lg">
         {/* Left Content */}
-        <div className="flex w-full flex-col justify-center space-y-10 p-10 md:w-1/2">
-          <div className="animate-fadeIn space-y-3 text-center">
-            <h1>Welcome Back!</h1>
+        <div className="scrollbar-hide flex w-full flex-col overflow-y-auto p-10 md:w-1/2">
+          <div className="animate-fadeIn mb-8 space-y-3 text-center">
+            <h1 className="text-4xl font-extrabold tracking-tight text-gray-900">
+              Welcome Back!
+            </h1>
+            <p className="text-sm italic text-gray-500">
+              Quest, where ideas meet communities ✨
+            </p>
             <p className="text-gray-600">
-              Log in to{" "}
+              Log in to {" "}
               <span className="font-semibold text-purple-600">Quest</span> and
               continue your journey.
             </p>
           </div>
 
-          <div className="animate-slideUp space-y-6">
+          <div className="animate-slideUp flex flex-1 flex-col justify-center space-y-6">
             <GoogleSignInButton />
             <div className="flex items-center gap-3">
               <div className="h-px flex-1 bg-gray-300" />
@@ -66,3 +71,4 @@ export default function Page() {
     </main>
   );
 }
+
