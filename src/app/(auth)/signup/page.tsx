@@ -32,8 +32,7 @@ export default function Page() {
         </div>
         {/* Left Content */}
         {/* Left Content */}
-        <div className="flex w-full flex-col p-10 md:w-1/2">
-          {/* Header stays fixed in its own container */}
+        <div className="scrollbar-hide flex w-full flex-col overflow-y-auto p-10 md:w-1/2">
           <div className="mb-8 shrink-0 text-center">
             <h1 className="text-4xl font-extrabold tracking-tight text-gray-900">
               Create your account
@@ -45,7 +44,6 @@ export default function Page() {
             </p>
           </div>
 
-          {/* Form takes remaining space, scrolls/expands without moving header */}
           <div className="flex flex-1 flex-col justify-center">
             <SignUpForm />
             <p className="mt-6 text-center text-sm text-gray-500">
