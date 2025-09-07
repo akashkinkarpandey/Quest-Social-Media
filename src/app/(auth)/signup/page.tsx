@@ -31,20 +31,23 @@ export default function Page() {
           </div>
         </div>
         {/* Left Content */}
-        <div className="flex w-full flex-col justify-center space-y-10 p-10 md:w-1/2">
-          <div className="animate-fadeIn space-y-4 text-center">
+        {/* Left Content */}
+        <div className="flex w-full flex-col justify-center p-10 md:w-1/2">
+          <div className="animate-fadeIn mb-8 text-center">
             <h1 className="text-4xl font-extrabold tracking-tight text-gray-900">
               Create your account
             </h1>
             <p className="text-gray-600">
-              Join <span className="text-xl font-bold text-purple-600">Quest</span>{" "}
+              Join{" "}
+              <span className="text-xl font-bold text-purple-600">Quest</span>{" "}
               and start your journey today.
             </p>
           </div>
 
-          <div className="space-y-6">
+          {/* Keep form + errors independent */}
+          <div className="animate-fadeIn">
             <SignUpForm />
-            <p className="text-center text-sm text-gray-500">
+            <p className="mt-6 text-center text-sm text-gray-500">
               Already have an account?{" "}
               <Link
                 href="/login"
