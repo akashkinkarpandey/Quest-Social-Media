@@ -18,13 +18,13 @@ export default function ForYouFeed() {
     status,
   } = useInfiniteQuery({
     queryKey: ["post-feed", "for-you"],
-    queryFn: ({ pageParam }) =>
-      kyInstance
-        .get(
-          "/api/posts/for-you",
-          pageParam ? { searchParams: { cursor: pageParam } } : {},
-        )
-        .json<PostsPage>(),
+    queryFn: async ({ pageParam }) => {
+      const searchParams = pageParam ? { cursor: pageParam } : {};
+      const response = await kyInstance
+        .get("/api/posts/for-you", { searchParams })
+        .json<PostsPage>();
+      return response;
+    },
     initialPageParam: null as string | null,
     getNextPageParam: (lastPage) => lastPage.nextCursor,
   });

@@ -5,6 +5,7 @@ import Post from "@/components/posts/Post";
 import PostsLoadingSkeleton from "@/components/posts/PostsLoadingSkeleton";
 import kyInstance from "@/lib/ky";
 import { PostsPage } from "@/lib/types";
+import { Bookmark } from "@prisma/client";
 import { useInfiniteQuery } from "@tanstack/react-query";
 import { Loader2 } from "lucide-react";
 
@@ -18,13 +19,14 @@ export default function Bookmarks() {
     status,
   } = useInfiniteQuery({
     queryKey: ["post-feed", "bookmarks"],
-    queryFn: ({ pageParam }) =>
-      kyInstance
-        .get(
-          "/api/posts/bookmarked",
-          pageParam ? { searchParams: { cursor: pageParam } } : {},
-        )
-        .json<PostsPage>(),
+    queryFn:async ({ pageParam }) =>
+    {
+      const searchParams = pageParam ? { cursor: pageParam } : {};
+      const response = await kyInstance
+        .get("/api/posts/bookmarked", { searchParams })
+        .json<PostsPage>();
+      return response;
+    },
     initialPageParam: null as string | null,
     getNextPageParam: (lastPage) => lastPage.nextCursor,
   });

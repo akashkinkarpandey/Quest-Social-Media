@@ -23,13 +23,13 @@ export default function Notifications() {
     status,
   } = useInfiniteQuery({
     queryKey: ["notifications"],
-    queryFn: ({ pageParam }) =>
-      kyInstance
-        .get(
-          "/api/notifications",
-          pageParam ? { searchParams: { cursor: pageParam } } : {},
-        )
-        .json<NotificationsPage>(),
+    queryFn:async ({ pageParam }) =>{
+      const searchParams = pageParam ? { cursor: pageParam } : {};
+      const response = await kyInstance
+        .get("/api/notifications", { searchParams })
+        .json<NotificationsPage>();
+      return response;  
+    },
     initialPageParam: null as string | null,
     getNextPageParam: (lastPage) => lastPage.nextCursor,
   });

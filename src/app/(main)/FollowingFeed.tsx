@@ -18,13 +18,13 @@ export default function FollowingFeed() {
     status,
   } = useInfiniteQuery({
     queryKey: ["post-feed", "following"],
-    queryFn: ({ pageParam }) =>
-      kyInstance
-        .get(
-          "/api/posts/following",
-          pageParam ? { searchParams: { cursor: pageParam } } : {},
-        )
-        .json<PostsPage>(),
+    queryFn: async ({ pageParam }) => {
+      const searchParams = pageParam ? { cursor: pageParam } : {};
+      const response = await kyInstance
+        .get("/api/posts/following", { searchParams })
+        .json<PostsPage>();
+      return response;
+    },
     initialPageParam: null as string | null,
     getNextPageParam: (lastPage) => lastPage.nextCursor,
   });

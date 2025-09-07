@@ -44,7 +44,7 @@ export default function PostEditor() {
       }),
       Placeholder.configure({
         placeholder: "Post something...",
-      }),
+      })
     ],
   });
 
