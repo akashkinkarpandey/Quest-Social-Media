@@ -16,7 +16,7 @@ export default function Page() {
         {/* Left Content */}
         <div className="scrollbar-hide flex w-full flex-col overflow-y-auto p-10 md:w-1/2">
           <div className="animate-fadeIn mb-8 space-y-3 text-center">
-            <h1 className="text-4xl font-extrabold tracking-tight text-gray-900">
+            <h1 className="text-2xl font-extrabold tracking-tight text-gray-900">
               Quest, where ideas meet communities ✨
             </h1>
             <p className="text-gray-600">
