@@ -17,11 +17,8 @@ export default function Page() {
         <div className="scrollbar-hide flex w-full flex-col overflow-y-auto p-10 md:w-1/2">
           <div className="animate-fadeIn mb-8 space-y-3 text-center">
             <h1 className="text-4xl font-extrabold tracking-tight text-gray-900">
-              Welcome Back!
-            </h1>
-            <p className="text-sm italic text-gray-500">
               Quest, where ideas meet communities ✨
-            </p>
+            </h1>
             <p className="text-gray-600">
               Log in to {" "}
               <span className="font-semibold text-purple-600">Quest</span> and
