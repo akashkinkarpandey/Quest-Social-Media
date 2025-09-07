@@ -45,7 +45,7 @@ export default function SignUpForm() {
         className="space-y-3 rounded-xl bg-white/70 p-6 shadow-lg backdrop-blur-md"
       >
         {error && (
-          <div className="mb-3">
+          <div className="mb-1">
             <p className="animate-shake text-center text-sm font-medium text-red-600">
               {error}
             </p>
