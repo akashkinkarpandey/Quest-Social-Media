@@ -42,7 +42,7 @@ export default function SignUpForm() {
     <Form {...form}>
       <form
         onSubmit={form.handleSubmit(onSubmit)}
-        className="animate-fadeIn space-y-6 rounded-xl bg-white/70 p-6 shadow-lg backdrop-blur-md"
+        className="animate-fadeIn space-y-3 rounded-xl bg-white/70 p-6 shadow-lg backdrop-blur-md"
       >
         {error && (
           <p className="animate-shake text-center text-sm font-medium text-red-600">

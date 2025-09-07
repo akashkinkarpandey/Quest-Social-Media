@@ -16,9 +16,7 @@ export default function Page() {
         {/* Left Content */}
         <div className="flex w-full flex-col justify-center space-y-10 p-10 md:w-1/2">
           <div className="animate-fadeIn space-y-3 text-center">
-            <h1 className="text-4xl font-extrabold tracking-tight text-gray-900">
-              Welcome back
-            </h1>
+            <h1>Welcome Back!</h1>
             <p className="text-gray-600">
               Log in to{" "}
               <span className="font-semibold text-purple-600">Quest</span> and
