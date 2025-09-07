@@ -15,8 +15,9 @@ const nextConfig = {
       },
       {
         protocol: "https",
-        hostname: "*.ufs.sh",
-      }
+        hostname: "<APP_ID>.ufs.sh",
+        pathname: "/f/*", // Only allow /f/ paths
+      },
     ],
   },
   rewrites: () => {
