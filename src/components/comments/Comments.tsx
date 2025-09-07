@@ -14,13 +14,13 @@ export default function Comments({ post }: CommentsProps) {
   const { data, fetchNextPage, hasNextPage, isFetching, status } =
     useInfiniteQuery({
       queryKey: ["comments", post.id],
-      queryFn: ({ pageParam }) =>
-        kyInstance
-          .get(
-            `/api/posts/${post.id}/comments`,
-            pageParam ? { searchParams: { cursor: pageParam } } : {},
-          )
-          .json<CommentsPage>(),
+      queryFn: async ({ pageParam }) => {
+        const searchParams = pageParam ? { cursor: pageParam } : {};
+        const response = await kyInstance
+          .get(`/api/posts/${post.id}/comments`, { searchParams })
+          .json<CommentsPage>();
+        return response;
+      },
       initialPageParam: null as string | null,
       getNextPageParam: (firstPage) => firstPage.previousCursor,
       select: (data) => ({

@@ -22,15 +22,13 @@ export default function SearchResults({ query }: SearchResultsProps) {
     status,
   } = useInfiniteQuery({
     queryKey: ["post-feed", "search", query],
-    queryFn: ({ pageParam }) =>
-      kyInstance
-        .get("/api/search", {
-          searchParams: {
-            q: query,
-            ...(pageParam ? { cursor: pageParam } : {}),
-          },
-        })
-        .json<PostsPage>(),
+    queryFn:async ({ pageParam }) =>{
+      const searchParams = pageParam ? { cursor: pageParam } : {};
+      const response = await kyInstance
+        .get("/api/search", { searchParams })
+        .json<PostsPage>();
+      return response;
+    },
     initialPageParam: null as string | null,
     getNextPageParam: (lastPage) => lastPage.nextCursor,
     gcTime: 0,

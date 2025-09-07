@@ -22,13 +22,14 @@ export default function UserPosts({ userId }: UserPostsProps) {
     status,
   } = useInfiniteQuery({
     queryKey: ["post-feed", "user-posts", userId],
-    queryFn: ({ pageParam }) =>
-      kyInstance
-        .get(
-          `/api/users/${userId}/posts`,
-          pageParam ? { searchParams: { cursor: pageParam } } : {},
-        )
-        .json<PostsPage>(),
+    queryFn:async ({ pageParam }) =>
+    {
+      const searchParams = pageParam ? { cursor: pageParam } : {};
+      const response = await kyInstance
+        .get("/api/users/${userId}/posts", { searchParams })
+        .json<PostsPage>();
+      return response;
+    },
     initialPageParam: null as string | null,
     getNextPageParam: (lastPage) => lastPage.nextCursor,
   });
