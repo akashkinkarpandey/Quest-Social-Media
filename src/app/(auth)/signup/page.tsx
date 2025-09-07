@@ -32,8 +32,9 @@ export default function Page() {
         </div>
         {/* Left Content */}
         {/* Left Content */}
-        <div className="flex w-full flex-col justify-center p-10 md:w-1/2">
-          <div className="animate-fadeIn mb-8 text-center">
+        <div className="flex w-full flex-col p-10 md:w-1/2">
+          {/* Header stays fixed in its own container */}
+          <div className="mb-8 shrink-0 text-center">
             <h1 className="text-4xl font-extrabold tracking-tight text-gray-900">
               Create your account
             </h1>
@@ -44,8 +45,8 @@ export default function Page() {
             </p>
           </div>
 
-          {/* Keep form + errors independent */}
-          <div className="animate-fadeIn">
+          {/* Form takes remaining space, scrolls/expands without moving header */}
+          <div className="flex flex-1 flex-col justify-center">
             <SignUpForm />
             <p className="mt-6 text-center text-sm text-gray-500">
               Already have an account?{" "}
