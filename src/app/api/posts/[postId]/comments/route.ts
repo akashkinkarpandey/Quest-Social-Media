@@ -2,11 +2,14 @@ import { validateRequest } from "@/auth";
 import prisma from "@/lib/prisma";
 import { CommentsPage, getCommentDataInclude } from "@/lib/types";
 import { NextRequest } from "next/server";
-
+interface Props{
+  params: Promise<{ postId: string}>
+}
 export async function GET(
   req: NextRequest,
-  { params: { postId } }: { params: { postId: string } },
+  { params }: Props ,
 ) {
+  const { postId } = await params;
   try {
     const cursor = req.nextUrl.searchParams.get("cursor") || undefined;
 
